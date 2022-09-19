@@ -11,8 +11,8 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "scp",
-	Short: "A command line tool for copying files to K8s pod.",
-	Long:  `A command line tool for copying files to K8s pod.`,
+	Short: "A command line tool for copying files to K8s pods.",
+	Long:  `A command line tool for copying files to K8s pods.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {
