@@ -51,5 +51,5 @@ Flags:
   -p, --pod string         pod name
   -r, --rate int           rate limit MiB/s (default 12)
   -s, --src string         source file path
-  -u, --url string         server url
+  -u, --url string         svr url
 ```
