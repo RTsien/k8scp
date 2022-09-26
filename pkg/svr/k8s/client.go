@@ -6,7 +6,7 @@ import (
 	"io"
 	"path"
 
-	v1 "k8s.io/api/core/v1"
+	corev1 "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/client-go/rest"
@@ -55,7 +55,7 @@ func (c *Client) CopyFileToPod(pod, container, namespace string, file io.Reader,
 		Namespace(namespace).SubResource("exec")
 
 	req.VersionedParams(
-		&v1.PodExecOptions{
+		&corev1.PodExecOptions{
 			Command:   cmd,
 			Container: container,
 			Stdin:     true,
