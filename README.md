@@ -12,7 +12,10 @@ A command line tool for copying files to K8s pods
 # Linux/macOS
 ./scp -u http://127.0.0.1:8080/upload -s ~/test.txt -n test-ns -p nginx-0 -c nginx -d '/data/'
 
-# Win
+# Win CMD/PowerShell
+./scp -u http://127.0.0.1:8080/upload -s C:\test.txt -n test-ns -p nginx-0 -c nginx -d '/data/'
+
+# Win Git-Bash ref: https://stackoverflow.com/q/7250130
 ./scp -u http://127.0.0.1:8080/upload -s ~/test.txt -n test-ns -p nginx-0 -c nginx -d '//data/'
 ```
 
