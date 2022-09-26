@@ -17,7 +17,7 @@ A command line tool for copying files to K8s pods
 ```
 
 ```
-# Support directory
+# Support uploading the entire directory
 ./scp -u http://127.0.0.1:8080/upload -s ~/ -n test-ns -p nginx-0 -c nginx -d '/data/'
 ```
 
