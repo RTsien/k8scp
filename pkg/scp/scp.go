@@ -23,9 +23,10 @@ type Copy struct {
 	Pod       string
 	Container string
 	Dst       string
+	Rate      int64
 }
 
-const rate = 12 * 1024 * 1024 // byte/s
+const rateUnit int64 = 1024 * 1024 // MiB/s
 
 func (c *Copy) Do() error {
 	pR, pW := io.Pipe()
@@ -74,7 +75,7 @@ func (c *Copy) Do() error {
 					return err
 				}
 				if _, err = io.Copy(io.MultiWriter(tarWriter, bar),
-					ratelimit.Reader(srcReader, ratelimit.NewBucketWithRate(rate, rate))); err != nil {
+					ratelimit.Reader(srcReader, ratelimit.NewBucketWithRate(float64(c.Rate*rateUnit), c.Rate*rateUnit))); err != nil {
 					fmt.Fprintf(os.Stderr, "io copy failed, err: %s", err.Error())
 					os.Exit(1)
 				}

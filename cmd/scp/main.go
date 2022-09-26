@@ -37,6 +37,7 @@ func init() {
 	_ = rootCmd.MarkFlagRequired("pod")
 	rootCmd.Flags().StringVarP(&cp.Container, "container", "c", "", "container name")
 	_ = rootCmd.MarkFlagRequired("container")
+	rootCmd.Flags().Int64VarP(&cp.Rate, "rate", "r", 12, "rate limit MiB/s")
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

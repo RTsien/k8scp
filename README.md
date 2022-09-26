@@ -34,6 +34,7 @@ Flags:
   -h, --help               help for scp
   -n, --namespace string   k8s namespace
   -p, --pod string         pod name
+  -r, --rate int           rate limit MiB/s (default 12)
   -s, --src string         source file path
   -u, --url string         server url
 ```
