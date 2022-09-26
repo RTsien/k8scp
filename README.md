@@ -42,7 +42,7 @@ Flags:
   -u, --url string         server url
 ```
 
-### show
+### example
 
 ```
 PS D:\github.com\k8scp> ./cmd/scp/scp.exe -u http://127.0.0.1:8080/upload -s ./cmd -n rq -p nginx-0 -c nginx -d '/aaa'
