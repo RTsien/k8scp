@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -10,7 +11,10 @@ import (
 	"github.com/rtsien/k8scp/pkg/svr"
 )
 
-var kubeconfig string
+var (
+	kubeconfig string
+	port       int
+)
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -25,7 +29,8 @@ var rootCmd = &cobra.Command{
 
 		http.HandleFunc("/upload", svr.UploadHandler(string(kByte)))
 
-		if err = http.ListenAndServe("0.0.0.0:8080", nil); err != nil {
+		if err = http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", port), nil); err != nil {
+			fmt.Fprintf(os.Stderr, "%v\n", err)
 			os.Exit(1)
 		}
 	},
@@ -34,6 +39,7 @@ var rootCmd = &cobra.Command{
 func init() {
 	rootCmd.Flags().StringVarP(&kubeconfig, "kubeconfig", "k", "", "kubeconfig file path")
 	_ = rootCmd.MarkFlagRequired("kubeconfig")
+	rootCmd.Flags().IntVarP(&port, "port", "p", 8080, "server port")
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

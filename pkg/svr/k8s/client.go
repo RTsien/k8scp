@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"os"
 	"path"
 
 	corev1 "k8s.io/api/core/v1"
@@ -28,7 +29,7 @@ func NewClient(kubeconfig string) (*Client, error) {
 	}
 	config, err := k8sConfig.ClientConfig()
 	if err != nil {
-		fmt.Printf("create kubeconfig[%s], err[%s].\n", kubeconfig, err.Error())
+		fmt.Fprintf(os.Stderr, "create kubeconfig[%s], err[%s].\n", kubeconfig, err.Error())
 		return nil, err
 	}
 	cli, err := kubernetes.NewForConfig(config)
@@ -80,7 +81,7 @@ func (c *Client) CopyFileToPod(pod, container, namespace string, file io.Reader,
 	fmt.Printf("copy file to pod[%s] container[%s], stdout[%s] stderr[%s]\n",
 		pod, container, stdout.String(), stderr.String())
 	if err != nil {
-		fmt.Printf("copy file to pod[%s] container[%s] failed, err[%s].\n", pod, container, err.Error())
+		fmt.Fprintf(os.Stderr, "copy file to pod[%s] container[%s] failed, err[%s].\n", pod, container, err.Error())
 		return err
 	}
 	return nil
