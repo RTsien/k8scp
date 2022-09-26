@@ -30,7 +30,7 @@ A command line tool for copying files to K8s pods
 ### example
 
 ```
-PS D:\github.com\k8scp> ./cmd/scp/scp.exe -u http://127.0.0.1:8080/upload -s ./cmd -n rq -p nginx-0 -c nginx -d '/aaa'
+PS D:\github.com\k8scp> ./cmd/scp/scp.exe -u http://127.0.0.1:8080/upload -s ./cmd -n default -p nginx-0 -c nginx -d '/aaa'
 scp\main.go 100% |███████████████████████████████████████████████████████| (1.5/1.5 kB, 2.7 MB/s) [0s:0s]
 scp\scp.exe 100% |████████████████████████████████████████████████████████| (9.7/9.7 MB, 23 MB/s) [0s:0s]
 svr\main.go 100% |█████████████████████████████████████████████████████████████████| (1.3/1.3 kB) [0s:0s]
