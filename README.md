@@ -26,6 +26,18 @@ A command line tool for copying files to K8s pods
 ./scp -u http://127.0.0.1:8080/upload -s ~/ -n test-ns -p nginx-0 -c nginx -d '/data/'
 ```
 
+
+### example
+
+```
+PS D:\github.com\k8scp> ./cmd/scp/scp.exe -u http://127.0.0.1:8080/upload -s ./cmd -n test-ns -p nginx-0 -c nginx -d '/aaa'
+scp\main.go 100% |███████████████████████████████████████████████████████| (1.5/1.5 kB, 2.7 MB/s) [0s:0s]
+scp\scp.exe 100% |████████████████████████████████████████████████████████| (9.7/9.7 MB, 23 MB/s) [0s:0s]
+svr\main.go 100% |█████████████████████████████████████████████████████████████████| (1.3/1.3 kB) [0s:0s]
+svr\svr.exe 100% |██████████████████████████████████████████████████████████| (46/46 MB, 16 MB/s) [2s:0s]
+```
+
+
 ### help
 ```
 Usage:
@@ -39,15 +51,5 @@ Flags:
   -p, --pod string         pod name
   -r, --rate int           rate limit MiB/s (default 12)
   -s, --src string         source file path
-  -u, --url string         server url
-```
-
-### example
-
-```
-PS D:\github.com\k8scp> ./cmd/scp/scp.exe -u http://127.0.0.1:8080/upload -s ./cmd -n rq -p nginx-0 -c nginx -d '/aaa'
-scp\main.go 100% |███████████████████████████████████████████████████████| (1.5/1.5 kB, 2.7 MB/s) [0s:0s]
-scp\scp.exe 100% |████████████████████████████████████████████████████████| (9.7/9.7 MB, 23 MB/s) [0s:0s]
-svr\main.go 100% |█████████████████████████████████████████████████████████████████| (1.3/1.3 kB) [0s:0s]
-svr\svr.exe 100% |██████████████████████████████████████████████████████████| (46/46 MB, 16 MB/s) [2s:0s]
+  -u, --url string         svr url
 ```
