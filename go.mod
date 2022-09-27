@@ -1,6 +1,6 @@
 module github.com/rtsien/k8scp
 
-go 1.17
+go 1.19
 
 require (
 	github.com/juju/ratelimit v1.0.2
