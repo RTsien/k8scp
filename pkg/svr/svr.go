@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"path"
 
+	"github.com/rtsien/k8scp/pkg/common"
 	"github.com/rtsien/k8scp/pkg/svr/k8s"
 )
 
@@ -52,8 +53,8 @@ func UploadHandler(kubeconfig string) func(w http.ResponseWriter, r *http.Reques
 					return
 				}
 				fmt.Printf("upload file [%s]\n", part.FileName())
-				err = k8sCli.CopyFileToPod(params["pod"], params["container"], params["namespace"], part,
-					fmt.Sprintf("%s/%s", params["dst"], path.Base(part.FileName())))
+				err = k8sCli.CopyFileToPod(params["pod"], params["container"], params["namespace"],
+					common.MutexReader(part), fmt.Sprintf("%s/%s", params["dst"], path.Base(part.FileName())))
 				if err != nil {
 					message = fmt.Sprintf("upload file [%s] failed: %v", part.FileName(), err)
 					return
